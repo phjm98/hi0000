@@ -1,0 +1,112 @@
+/* إعدادات أساسية */
+    @import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Tajawal", sans-serif;
+}
+
+/* Navbar styling */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0 5rem;
+}
+
+nav .logo {
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+}
+
+nav .logo i {
+  color: #0aa6ef;
+  padding-left: 0.75rem;
+}
+nav .bars-menu {
+  display: none;
+}
+nav .logo h4 {
+  font-family: "Lalezar", cursive;
+}
+
+nav .nav-items {
+  display: flex;
+  list-style-type: none;
+}
+
+nav .nav-items .nav-item {
+  padding: 0 1rem;
+}
+
+nav .nav-link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.4rem;
+}
+
+nav .nav-link:hover {
+  color: #ffffff;
+}
+
+/* قسم المنتجات */
+.products-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.products-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #190aef;
+  margin-bottom: 2rem;
+}
+
+/* شبكة المنتجات */
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.product-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.product-box:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-name {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 600px) {
+  .products-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-box {
+    width: 90%;
+  }
+}

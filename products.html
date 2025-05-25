@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous"
+  />
+<link rel="stylesheet" href="products.css" />
+
+  <title>المنتجات</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .logo h4 {
+      margin: 0;
+    }
+
+    .bars-menu {
+      display: none;
+    }
+
+    .nav-items {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      display: inline-block;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #ffc107;
+    }
+
+    .products-section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .products-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #190aef;
+      margin-bottom: 2rem;
+    }
+
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .product-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      width: calc(33.333% - 1rem);
+      box-sizing: border-box;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .product-box:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .product-box {
+        width: calc(50% - 1rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-box {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <h4>مكتبة ومصور الجمهورية</h4>
+    </div>
+    <div class="bars-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-items">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">الصفحة الرئيسية</a>
+      </li>
+      <li class="nav-item">
+        <a href="products.html" class="nav-link">الاقسام</a>
+      </li>
+      <li class="nav-item">
+        <a href="#login" class="nav-link">انشاء الحساب</a>
+      </li>
+      <li class="nav-item">
+        <a href="#payment" class="nav-link">الدفع</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section">
+    <div class="products-title">جميع المنتجات</div>
+    <div class="products-container">
+      <div class="product-box">
+        <div class="product-name">اسم المنتج 1</div>
+      </div>
+      <div class="product-box">
+        <div class="product-name">اسم المنتج 2</div>
+      </div>
+      <div class="product-box">
+        <div class="product-name">اسم المنتج 3</div>
+      </div>
+      <div class="product-box">
+        <div class="product-name">اسم المنتج 4</div>
+      </div>
+      <div class="product-box">
+        <div class="product-name">اسم المنتج 5</div>
+      </div>
+      <div class="product-box">
+        <div class="product-name">اسم المنتج 6</div>
+      </div>
+      <!-- نسخ لمنتجات إضافية حسب الحاجة -->
+    </div>
+  </section>
+</body>
+</html>
