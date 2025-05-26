@@ -1,0 +1,104 @@
+/* الخطوط الأساسية */
+body {
+  font-family: 'Tajawal', sans-serif;
+  background-color: #f3f3f3;
+  direction: rtl;
+  padding: 2rem;
+  padding-top: 80px; /* مساحة لنفسح مكان للـ navbar الثابت */
+  margin: 0; /* لإزالة هوامش افتراضية */
+}
+
+/* ستايل الـ navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9vh;
+  padding: 0.1rem 3rem;
+  position: fixed; /* تثبيت الناف بار */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95); /* خلفية شبه شفافة */
+  z-index: 1000;
+  box-shadow: 0 2px 90px rgba(0,0,0,0.1);
+}
+
+nav .logo {
+  font-family: "Lalezar", cursive;
+  font-size: 2rem;
+}
+
+nav .bars-menu {
+  display: none;
+}
+
+nav .nav-items {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav .nav-items .nav-item {
+  padding: 0 1rem;
+}
+
+nav .nav-link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.4rem;
+}
+
+nav .nav-link:hover {
+  color: #707070;
+}
+
+/* تنسيق نموذج تسجيل الدخول */
+.login-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #0a38ef;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #0a38ef;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0f08c0;
+}

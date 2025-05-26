@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- خطوط وأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- ملف التصميم العام (يتضمن navbar) -->
+  <link rel="stylesheet" href="styles.css" />
+  
+  <!-- ملف التصميم الخاص بتسجيل الدخول -->
+  <link rel="stylesheet" href="login.css" />
+
+  <title>تسجيل الدخول - مصور الجمهورية</title>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <h4>مكتبة ومصور الجمهورية</h4>
+    </div>
+    <div class="bars-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-items">
+      <li class="nav-item">
+        <a href="#product" class="nav-link">الاقسام</a>
+      </li>         
+      <li class="nav-item">
+        <a href="payment.html" class="nav-link">الدفع</a>
+      </li>      
+      <li class="nav-item">
+        <a href="login.html" class="nav-link">انشاء الحساب</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- نموذج تسجيل الدخول -->
+  <div class="login-form" style="margin-top: 100px;">
+    <h2>تسجيل الدخول</h2>
+    <form action="#" method="POST" onsubmit="return saveUserInfo(event)">
+      <label for="username">الاسم</label>
+      <input type="text" id="username" name="username" placeholder="ادخل اسمك" required />
+
+      <label for="address">العنوان</label>
+      <input type="text" id="address" name="address" placeholder="ادخل عنوانك" required />
+
+      <label for="phone">رقم الهاتف</label>
+      <input type="text" id="phone" name="phone" placeholder="ادخل رقم الهاتف" required />
+
+      <label for="details">تفاصيل إضافية (اختياري)</label>
+      <input type="text" id="details" name="details" placeholder="أدخل تفاصيل إضافية" />
+
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+    <div id="success-msg" style="color: green; margin-top: 1rem;"></div>
+  </div>
+
+<script>
+  function saveUserInfo(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("username").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const details = document.getElementById("details").value.trim();
+
+    if (!name || !address || !phone) {
+      alert("يرجى تعبئة جميع الحقول المطلوبة");
+      return false;
+    }
+
+    const userInfo = {
+      name: name,
+      address: address,
+      phone: phone,
+      details: details
+    };
+
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    document.getElementById("success-msg").textContent = "تم حفظ المعلومات بنجاح ✔";
+
+    return false;
+  }
+</script>
+
+</body>
+</html>
+    
