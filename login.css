@@ -1,7 +1,7 @@
 /* الخطوط الأساسية */
 body {
   font-family: 'Tajawal', sans-serif;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   direction: rtl;
   padding: 2rem;
   padding-top: 80px; /* مساحة لنفسح مكان للـ navbar الثابت */
