@@ -5,78 +5,222 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>سلة الشراء</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="payment.css" />
   <style>
     body {
       font-family: 'Tajawal', sans-serif;
       background-color: #f9f9f9;
       margin: 0;
-      padding: 2rem;
-    }
-    h2 {
-      color: #0a38ef;
+      padding: 0;
     }
     .cart-container {
       background: #fff;
       padding: 1.5rem;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 700px;
-      margin: auto;
+      max-width: 750px;
+      margin: 120px auto 2rem;
+    }
+    h2 {
+      color: #0a38ef;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
     .cart-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.8rem 0;
       border-bottom: 1px solid #ccc;
+      padding: 1rem 0;
+      flex-wrap: wrap;
     }
     .cart-item:last-child {
       border-bottom: none;
     }
+    .cart-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1 1 60%;
+    }
+    .cart-info img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border-radius: 0.5rem;
+    }
+    .cart-info div {
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
     .cart-controls button {
       padding: 0.3rem 0.7rem;
-      margin: 0 0.2rem;
       background-color: #0a38ef;
       color: white;
       border: none;
       border-radius: 0.4rem;
       cursor: pointer;
     }
-    .send-btn {
+    .cart-summary {
+      text-align: center;
       margin-top: 1.5rem;
-      background-color: green;
-      color: white;
+      font-size: 1.2rem;
+      color: #000;
+    }
+    .send-btn, .clear-btn {
+      margin-top: 1rem;
       padding: 0.7rem 1.5rem;
       border: none;
       border-radius: 0.5rem;
       font-size: 1rem;
       cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .send-btn {
+      background-color: green;
+      color: white;
+    }
+    .clear-btn {
+      background-color: red;
+      color: white;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 9vh;
+      padding: 0 1.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #ffffff;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .logo {
+      font-size: 1.6rem;
+      font-family: "Lalezar", cursive;
+    }
+
+    nav .nav-items {
+      display: flex;
+      list-style-type: none;
+    }
+
+    nav .nav-item {
+      margin: 0 0.5rem;
+    }
+
+    nav .nav-link {
+      text-decoration: none;
+      color: #000000;
+      font-size: 1.2rem;
+    }
+
+    nav .nav-link:hover {
+      color: #707070;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .nav-items {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        text-align: center;
+        background-color: #fff;
+        position: absolute;
+        top: 9vh;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .nav-items.active {
+        display: flex;
+      }
+      .bars-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: #000;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="cart-container">
-    <h2>سلة الشراء</h2>
-    <div id="cart-items"></div>
-    <button class="send-btn" onclick="sendOrderViaWhatsApp()">إرسال الطلب إلى واتساب</button>
-  </div>
 
-  <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
+ <!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <a href="index.html" class="nav-link" style="font-size: 1.6rem; font-family: 'Lalezar', cursive; text-decoration: none; color: inherit;">
+      مكتبة ومصور الجمهورية
+    </a>
+  </div>
+  <div class="bars-menu" onclick="document.querySelector('.nav-items').classList.toggle('active')">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul class="nav-items">
+<li class="nav-item"><a href="index.html#product" class="nav-link">الاقسام</a></li>
+    <li class="nav-item"><a href="payment.html" class="nav-link">الدفع</a></li>
+    <li class="nav-item"><a href="login.html" class="nav-link">انشاء الحساب</a></li>
+  </ul>
+</nav>
+
+    <!-- محتوى السلة -->
+    <div class="cart-container">
+      <h2>سلة الشراء</h2>
+      <div id="cart-items"></div>
+      <div class="cart-summary" id="cart-total"></div>
+      <button class="clear-btn" onclick="clearCart()">إفراغ السلة</button>
+      <button class="send-btn" onclick="sendOrderViaWhatsApp()">إرسال الطلب إلى واتساب</button>
+    </div>
+
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
 
     function renderCart() {
       const container = document.getElementById("cart-items");
+      const totalDisplay = document.getElementById("cart-total");
       container.innerHTML = "";
+      let total = 0;
+
       if (cart.length === 0) {
         container.innerHTML = "<p>السلة فارغة</p>";
+        totalDisplay.innerHTML = "";
         return;
       }
+
       cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
         const div = document.createElement("div");
         div.className = "cart-item";
         div.innerHTML = `
-          <span>${item.name}</span>
+          <div class="cart-info">
+            <img src="${item.image || 'https://via.placeholder.com/70'}" alt="${item.name}">
+            <div>
+              <strong>${item.name}</strong>
+              <span>السعر: ${item.price} د.ع</span>
+              <span>المجموع: ${itemTotal} د.ع</span>
+            </div>
+          </div>
           <div class="cart-controls">
             <button onclick="decreaseQty(${index})">-</button>
             <span>${item.quantity}</span>
@@ -86,26 +230,41 @@
         `;
         container.appendChild(div);
       });
+
+      totalDisplay.innerHTML = `<strong>الإجمالي: ${total} د.ع</strong>`;
     }
 
     function increaseQty(index) {
       cart[index].quantity++;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
+      updateCart();
     }
 
     function decreaseQty(index) {
       if (cart[index].quantity > 1) {
         cart[index].quantity--;
       } else {
-        cart.splice(index, 1);
+        if (confirm("هل تريد حذف المنتج من السلة؟")) {
+          cart.splice(index, 1);
+        }
       }
-      localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
+      updateCart();
     }
 
     function removeItem(index) {
-      cart.splice(index, 1);
+      if (confirm("هل أنت متأكد من حذف هذا المنتج؟")) {
+        cart.splice(index, 1);
+        updateCart();
+      }
+    }
+
+    function clearCart() {
+      if (confirm("هل أنت متأكد من إفراغ السلة؟")) {
+        cart = [];
+        updateCart();
+      }
+    }
+
+    function updateCart() {
       localStorage.setItem("cart", JSON.stringify(cart));
       renderCart();
     }
@@ -119,15 +278,33 @@
 
       let message = `طلب جديد من ${userInfo.name}%0a📍 العنوان: ${userInfo.address}%0a📞 رقم الهاتف: ${userInfo.phone}%0a📝 تفاصيل: ${userInfo.details || 'بدون'}%0a\n`;
 
+      let total = 0;
+
       cart.forEach((item, i) => {
-        message += `${i + 1}- ${item.name} × ${item.quantity}%0a`;
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        message += `${i + 1}- ${item.name} × ${item.quantity} = ${itemTotal} د.ع%0a`;
       });
 
-      const url = `https://wa.me/+9647717702898?text=${message}`; // ضع رقمك هنا
-      window.open(url, '_blank');
+      message += `%0a📦 الإجمالي الكلي: ${total} د.ع`;
+
+      const url = `https://wa.me/+9647717702898?text=${message}`;
+      if (confirm("هل تريد إرسال الطلب إلى واتساب؟")) {
+        window.open(url, '_blank');
+      }
     }
 
     renderCart();
   </script>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#product') {
+      const productSection = document.getElementById('product');
+      if (productSection) {
+        productSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script>
 </body>
 </html>
