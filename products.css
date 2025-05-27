@@ -1,6 +1,6 @@
-/* إعدادات أساسية */
-    @import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -9,104 +9,73 @@
 
 body {
   font-family: "Tajawal", sans-serif;
+  background-color: #f9f9f9;
 }
 
-/* Navbar styling */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10vh;
-  max-width: 1366px;
-  margin: 0 auto;
-  padding: 0 5rem;
+  height: 9vh;
+  padding: 0 1.5rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-nav .logo {
+/* Container adjustments to offset fixed navbar */
+.cart-container {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 120px auto 2rem; /* important: space for fixed navbar */
+}
+
+h2 {
+  color: #0a38ef;
+  text-align: center;
+}
+
+.cart-item {
   display: flex;
-  font-size: 2rem;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #ccc;
 }
 
-nav .logo i {
-  color: #0aa6ef;
-  padding-left: 0.75rem;
-}
-nav .bars-menu {
-  display: none;
-}
-nav .logo h4 {
-  font-family: "Lalezar", cursive;
+.cart-item:last-child {
+  border-bottom: none;
 }
 
-nav .nav-items {
-  display: flex;
-  list-style-type: none;
+.cart-controls button {
+  padding: 0.3rem 0.7rem;
+  margin: 0 0.2rem;
+  background-color: #0a38ef;
+  color: white;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
 }
 
-nav .nav-items .nav-item {
-  padding: 0 1rem;
-}
-
-nav .nav-link {
-  text-decoration: none;
-  color: #000000;
-  font-size: 1.4rem;
-}
-
-nav .nav-link:hover {
-  color: #ffffff;
-}
-
-/* قسم المنتجات */
-.products-section {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.products-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #190aef;
-  margin-bottom: 2rem;
-}
-
-/* شبكة المنتجات */
-.products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.product-box {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 1rem;
-  width: 200px;
-  text-align: center;
-  transition: box-shadow 0.3s ease;
-}
-
-.product-box:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.product-name {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-/* استجابة للشاشات الصغيرة */
-@media (max-width: 600px) {
-  .products-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-box {
-    width: 90%;
-  }
+.send-btn {
+  margin-top: 1.5rem;
+  background-color: green;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
